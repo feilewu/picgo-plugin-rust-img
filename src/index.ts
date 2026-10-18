@@ -25,7 +25,7 @@ const postOptions = (fileName: string, options: any, image: string): any => {
     headers: {
       'Content-Type': 'application/json',
       'User-Agent': 'PicGo',
-      'token': options.apiToken
+      'Authorization': "Bearer " + options.token
     },
     body: JSON.stringify({
       base64_img: finalBase64
@@ -86,7 +86,7 @@ export = (ctx: PicGo) => {
           type: 'input', // 配置类型，input 展示为一个输入框
           default: '', // 默认值
           required: true, // 是否必填
-          message: '上传接口' // 占位符
+          message: '服务器host' // 占位符
           },
           {
           name: 'uploadAPI', // 配置名
@@ -94,7 +94,14 @@ export = (ctx: PicGo) => {
           default: '', // 默认值
           required: true, // 是否必填
           message: '上传接口' // 占位符
-          },          
+          },  
+          {
+          name: 'token', // 配置名
+          type: 'input', // 配置类型，input 展示为一个输入框
+          default: '', // 默认值
+          required: true, // 是否必填
+          message: 'token' // 占位符
+          },         
         ];
       }
     })
